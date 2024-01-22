@@ -1,0 +1,400 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Zeyada&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    --text-color: #000000;
+    --background-white: #f6fdff;
+    --menu-white: #c8dadd;
+    --main-blue: #2980b9;
+    --hover-blue: hsla(204, 64%, 44%, 0.4);
+    --light-blue: #73969c;
+
+    --next-color: #F4D909 ;
+    --waitingFor-color: #0C7BF9 ;
+    --someday-color: #85BF3F;
+    --danger-color: #FF8B68;
+
+    --main-font: 'Lora', serif;
+    --title-font: 'Zeyada', cursive;
+}
+
+body {
+    background-color: var(--background-white);
+    color: var(--text-color);
+    font-family: var(--main-font);
+    text-align: center;
+    min-height: 100vh;
+}
+
+main {
+    min-height: 100vh;
+    display: grid;
+    grid: 
+        "menu list" / 25% auto
+}
+
+/* ---- Side Menu ---- */
+.menu {
+    background-color: var(--menu-white);
+    width: 25%;
+    grid-area: menu;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.menu__title {
+    color: var(--main-blue);
+    font-family: var(--title-font);
+    font-size: 2.6rem;
+    text-transform: capitalize;
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu__title a {
+    color: var(--main-blue);
+    position: absolute;
+    font-size: 1rem;
+    bottom: -1px;
+    right: -10px;
+    transition: 300ms ease-in-out;
+}
+
+.menu__title a:hover {
+    transform: scale(1.2);
+}
+
+.menu__list {
+    display: flex  ;    
+    flex-direction: column;
+    gap: 1.5rem;
+
+}
+
+.list-items__label {
+    display: inline-block;
+    width: 100%;
+    font-size: 1.1rem;
+    padding: .5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.list-items__label:hover {
+    background-color: var(--hover-blue);
+}
+
+.list-items__label::after {
+    content: "";
+    background-color: var(--light-blue);
+    height: 1px;
+    position: absolute;
+    right: -10px;
+    left: -10px;
+    bottom: -5px;
+}
+
+.menu__list-items [type="radio"] {
+    opacity: 0;
+    display: none;
+}
+
+.menu__list-items [type="radio"]:checked ~ label {
+    background-color: var(--main-blue);
+    color: var(--background-white);
+}
+
+
+.list-items__label i {
+    margin-right: .5rem;
+}
+
+
+/* ---- To-do List ---- */
+.todo-list {
+    background-color: var(--background-color);
+    margin: 4rem 1rem 1rem 6rem;
+    grid-area: list;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    position: relative;
+}
+
+.todo-list__title {
+    font-size: 2rem;
+    margin-bottom: .7rem;
+}
+
+.todo-list__tasks-counter {
+    color: var(--light-blue);
+    font-size: 0.85rem;
+}
+
+.todo-list__tasks-counter:after {
+    content: "";
+    background-color: var(--light-blue);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.todo-list__tasks-list {
+    width: 95%;
+    margin-top: 3rem;
+}
+
+.tasks-list__task {
+    width: 100%;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: 3fr auto;
+    position: relative;
+}
+
+.tasks-list__task::after {
+    content: "";
+    background-color: var(--light-blue);
+    height: 1px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.task-list__task-name {
+    font-size: 1.15rem;
+    justify-self: flex-start;
+    cursor: pointer;
+}   
+
+.task-list__task-name > [type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+.custom-checkbox {
+    --check-box-size: 0.85rem;
+    display: inline-block;
+    width: var(--check-box-size);
+    height: var(--check-box-size);
+    border: 1px solid var(--text-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 300ms ease-in-out;
+}
+
+.task-list__task-name:hover .custom-checkbox {
+    border-color: var(--main-blue);
+    transform: scale(1.2);
+}
+
+.task-list__task-name label {
+    cursor: pointer;
+}
+
+/* -- Tasks done -- */
+.task-list__task-name label::after {
+    content: "";
+    background-color: var(--light-blue);
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 1.7rem;
+    right: 0;
+
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: all 300ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label .custom-checkbox {
+    background-color: var(--main-blue);
+    border-color: var(--main-blue);
+    box-shadow: inset 0 0 0 2px white;
+}
+
+[type="checkbox"]:checked + label {
+    opacity: .5;
+}
+
+[type="checkbox"]:checked + label::after {
+    transform: scaleX(1);
+} 
+
+[type="checkbox"]:checked ~ .task-list__action-buttons {
+    display: none;
+}
+
+.task-list__action-buttons {
+    opacity: 0;
+}
+
+.task-list__buttons {
+    background-color: transparent;
+    margin-right: .5rem;
+    border: none;
+    color: var(--light-blue);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+.task-list__buttons:hover {
+    color: var(--main-blue);
+    transform: scale(1.2);
+}
+
+.tasks-list__task:hover > .task-list__action-buttons {
+    opacity: 1;
+}
+
+/* ---- Add new task ---- */
+.add-task__form {
+    margin-top: 1rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.form__new-task-name {
+    background-color: transparent;
+    width: 15rem;
+    border: none;
+    border-bottom: 1px solid var(--main-blue);
+    outline: none;
+    font-size: 1.15rem;
+    order: 2;
+}
+
+.form__button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.20rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+.form__button:hover{
+    color: var(--main-blue);
+    transform: scale(1.1);
+}
+
+.todo-list__clear-complete-tasks-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--light-blue);
+    font-size: 1rem;
+
+    position: absolute;
+    right: 2.5rem;
+    top: 1rem;
+
+    cursor: pointer;    
+    transition: all 300ms ease-in-out;
+}
+
+.todo-list__clear-complete-tasks-btn::after {
+    content: "";
+    background-color: currentColor;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+
+    transform: scale(0);
+    transition: transform 200ms ease-in;
+    
+}
+
+.todo-list__clear-complete-tasks-btn:hover {
+    color: var(--danger-color);
+}
+
+.todo-list__clear-complete-tasks-btn:hover::after {
+    transform: scale(1);
+}
+
+
+/* --- Footer --- */
+footer {
+    margin-top: 1rem;
+}
+
+footer a {
+    color: var(--main-blue);
+}
+
+@media (max-width: 1120px) {
+    main {
+        grid: 
+            "menu"
+            "list" ;
+        grid-template-rows: 5rem auto;
+    }
+
+    .menu {
+        flex-direction: row;
+        width: 100%;
+        padding: 1rem 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: unset;
+    }
+    .menu__title {
+        position: initial;
+        font-size: 2rem;
+    }
+
+    .menu__list {
+        flex-direction: row;
+    }
+
+    .menu__list-items {
+        margin-top: 0;
+   }
+
+   .list-items__label:after {
+        position: unset;
+   }
+
+   .list-items__label i {
+        margin: .3rem;
+   }
+}
+
+@media (max-width: 820px) {
+    .menu__title {
+        display: none;
+    }
+
+    .list-items__label {
+        font-size: .85rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
