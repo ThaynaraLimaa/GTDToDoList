@@ -10,7 +10,7 @@ The GTD To-do List, allows you to sort your tasks into distinct lists based on t
 - **Someday/Maybe**: tasks that are not urgent or ideas that you want to someday work on it. 
 
 ## 🛠️ How to run the project
-You can see the demo if the project [here](), or clone this repository and run the the _index.html_ file. 
+You can see the demo if the project [here](https://thaynaralimaa.github.io/GTDToDoList/), or clone this repository and run the the _index.html_ file. 
 
 ## ✔️ Technologies used
 - HTML
