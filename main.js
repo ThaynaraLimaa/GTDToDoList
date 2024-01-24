@@ -54,13 +54,11 @@ newTaskForm.addEventListener('submit', (e) => {
 // Delete all completed tasks from the current list
 cleanCompleteTasksBtn.addEventListener("click", () => {
     const tasksCompleted = localStorageTasksList.filter(task => task.list == listSelected & task.completed == true)
-    console.log(tasksCompleted)
 
     if(tasksCompleted.length < 1) return
 
     const confirm = window.confirm(`Are you sure you want delete ${tasksCompleted.length} tasks from ${listSelected}?`)
     if(confirm == true) {
-        console.log('Apagando...')
         tasksCompleted.forEach(task => {
             localStorageTasksList.splice((localStorageTasksList.findIndex(element => element.id == task.id)), 1)
             renderTasks(listSelected)
@@ -138,9 +136,9 @@ function createElements(taskTempleteElement, task) {
     editButton.addEventListener("click", () => {editTask(checkbox.id)})
 
     // Hide the actions buttons for completed tasks
-    if(task.completed == true) {
-        hideActionsButtons(label)
-    }
+    // if(task.completed == true) {
+    //     hideActionsButtons(label)
+    // }
 
     tasksContainer.appendChild(taskTempleteElement)
 }

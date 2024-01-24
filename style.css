@@ -185,8 +185,13 @@ main {
 }
 
 .task-list__task-name {
+    max-width: 85%;
     font-size: 1.15rem;
+    padding: .5rem;
     justify-self: flex-start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     cursor: pointer;
 }   
 
@@ -243,10 +248,6 @@ main {
 [type="checkbox"]:checked + label::after {
     transform: scaleX(1);
 } 
-
-[type="checkbox"]:checked ~ .task-list__action-buttons {
-    display: none;
-}
 
 .task-list__action-buttons {
     opacity: 0;
@@ -363,6 +364,7 @@ footer a {
         left: 0;
         right: 0;
         bottom: unset;
+        text-align: center;
     }
     .menu__title {
         position: initial;
@@ -391,10 +393,37 @@ footer a {
         display: none;
     }
 
+    .todo-list {
+        margin: 2rem;
+    }
+
     .list-items__label {
-        font-size: .85rem;
+        font-size: 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
+    .task-list__action-buttons {
+        opacity: .6;
+    }
+
+    .todo-list__clear-complete-tasks-btn {
+        position: relative;
+        left: 0;
+    }
+}
+
+@media (max-width: 490px) {
+    .todo-list {
+        margin: 1.5rem;
+    }
+    .list-items__label {
+        font-size: .65rem;
+    }
+
+    .list-items__label i {
+        font-size: 1rem;
+    }
+
 }
